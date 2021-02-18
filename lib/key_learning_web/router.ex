@@ -35,12 +35,14 @@ defmodule KeyLearningWeb.Router do
     pipe_through :api_authenticated
 
     resources "/courses", CourseController, except: [:new, :edit, :index, :show]
+    resources "/lectures", LectureController, except: [:new, :edit, :index, :show]
   end
 
   scope "/api", KeyLearningWeb.Api, as: :api do
     pipe_through :api
 
     resources "/courses", CourseController, only: [:index, :show]
+    resources "/lectures", LectureController, only: [:index, :show]
     post "/sign_in", SessionController, :create
   end
 
