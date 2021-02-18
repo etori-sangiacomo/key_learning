@@ -30,3 +30,11 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+config :key_learning, KeyLearning.Guardian,
+       issuer: "key_learning",
+       secret_key: "a+DMNted3BFK6x+QIz8KiXAhGzh+4PfrrQgjPsrDoZFKEvW7lBGz1ko8SWL9ZHIh"
+
+config :key_learning, KeyLearningWeb.AuthAccessPipelinePlug,
+        module: KeyLearning.Guardian,
+        error_handler: KeyLearningWeb.AuthErrorHandlerPlug
